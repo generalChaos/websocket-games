@@ -37,7 +37,9 @@ export const AppConfig = {
   API: {
     ROOMS_ENDPOINT: '/rooms',
     WEBSOCKET_ENDPOINT: '/rooms',
-    CORS_ORIGINS: ['http://localhost:3000', 'http://localhost:3001'],
+    CORS_ORIGINS: process.env.CORS_ORIGINS
+      ? process.env.CORS_ORIGINS.split(',').map(origin => origin.trim())
+      : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3003'],
   },
   GAMES: {
     DEFAULT: 'fibbing-it',

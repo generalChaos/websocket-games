@@ -1,5 +1,4 @@
 {
-  "extends": "../../../packages/config/tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./dist",
     "noEmit": false,
@@ -9,10 +8,15 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "resolveJsonModule": true,
     "paths": {
       "@tb2/*": ["../../../packages/*/dist", "../../../packages/*/src"]
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "test"]
 }

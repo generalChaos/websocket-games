@@ -8,6 +8,8 @@
   "scripts": {
     "build": "nest build && npm run postbuild",
     "postbuild": "if [ -d \"dist/apps/api/src\" ]; then cp -r dist/apps/api/src/* dist/ && rm -rf dist/apps dist/packages; fi",
+    "postinstall": "prisma generate",
+    "migrate:deploy": "prisma migrate deploy",
     "dev": "nest start --watch --preserveWatchOutput",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
