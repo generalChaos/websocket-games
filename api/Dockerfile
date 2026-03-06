@@ -33,8 +33,9 @@ COPY package*.json ./
 COPY tsconfig*.json ./
 COPY nest-cli.json ./
 
-# Install production dependencies only
-RUN npm ci --only=production
+# Install production dependencies + prisma and tsconfig-paths (needed for runtime)
+RUN npm ci --only=production && \
+    npm install --save prisma tsconfig-paths
 
 # Copy Prisma files
 COPY prisma ./prisma
