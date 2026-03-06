@@ -13,7 +13,7 @@ export default function AvatarDemo() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">Avatar Gallery</h1>
           <p className="text-slate-300 text-lg">
-            Browse through all available avatars for your party game
+            Browse through all available avatars for your party game.
           </p>
         </div>
 
