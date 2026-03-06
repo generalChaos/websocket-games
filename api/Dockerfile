@@ -33,15 +33,14 @@ COPY package*.json ./
 COPY tsconfig*.json ./
 COPY nest-cli.json ./
 
-# Install production dependencies + prisma and tsconfig-paths (needed for runtime)
-RUN npm ci --only=production && \
-    npm install --save prisma tsconfig-paths
-
-# Copy Prisma files
+# Copy Prisma files BEFORE installing (needed for postinstall script)
 COPY prisma ./prisma
 
-# Generate Prisma Client
-RUN npx prisma generate
+# Install production dependencies + prisma and tsconfig-paths (needed for runtime)
+# Skip postinstall script during install, then generate Prisma manually
+RUN npm ci --only=production --ignore-scripts && \
+    npm install --save prisma tsconfig-paths --ignore-scripts && \
+    npx prisma generate
 
 # Copy built application from builder
 COPY --from=builder /app/dist ./dist
