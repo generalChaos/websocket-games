@@ -21,8 +21,10 @@ This guide will help you deploy the Party Game API to Railway.
 
 1. In the same project, click **"New"** → **"GitHub Repo"**
 2. Select your repository
-3. Railway will detect the `api/` directory or you can set the root directory to `api/`
-4. Railway will automatically detect the Dockerfile and build
+3. **IMPORTANT**: Set the **Root Directory** to `api/` in service settings
+   - Go to Service → **Settings** → **Root Directory**
+   - Enter: `api`
+4. Railway will automatically detect the Dockerfile in the `api/` directory and build
 
 ### 3. Environment Variables
 
@@ -55,10 +57,13 @@ Set these in your API service:
 
 1. Click **"New"** → **"GitHub Repo"**
 2. Select your repository again
-3. In service settings, set:
-   - **Root Directory**: `api`
-   - **Build Command**: (auto-detected from Dockerfile)
-   - **Start Command**: (auto-detected from Dockerfile)
+3. **CRITICAL**: In service settings, set:
+   - **Root Directory**: `api` (this tells Railway to build from the `api/` folder)
+   - Go to: Service → **Settings** → **Root Directory** → Enter: `api`
+4. Railway will automatically:
+   - Detect the Dockerfile in `api/Dockerfile`
+   - Use the build commands from the Dockerfile
+   - Use the start command from `railway.json`
 
 ### Step 4: Configure Environment Variables
 

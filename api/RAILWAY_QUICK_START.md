@@ -20,8 +20,9 @@ Your project is now **dockerized** and ready for Railway deployment:
 ### 2. **API Service**
    - Click "New" → "GitHub Repo"
    - Select your repository
-   - Set **Root Directory** to: `api`
-   - Railway will auto-detect the Dockerfile
+   - **CRITICAL**: Set **Root Directory** to: `api`
+     - Go to: Service → Settings → Root Directory → Enter: `api`
+   - Railway will auto-detect the Dockerfile in `api/Dockerfile`
 
 ### 3. **Environment Variables**
    Set in API service:

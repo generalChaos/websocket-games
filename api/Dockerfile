@@ -8,14 +8,11 @@ COPY package*.json ./
 COPY tsconfig*.json ./
 COPY nest-cli.json ./
 
-# Install dependencies
-RUN npm ci
-
-# Copy Prisma schema
+# Copy Prisma schema BEFORE installing (needed for postinstall script)
 COPY prisma ./prisma
 
-# Generate Prisma Client
-RUN npx prisma generate
+# Install dependencies (postinstall will run prisma generate)
+RUN npm ci
 
 # Copy source code
 COPY . .
